@@ -1,4 +1,4 @@
-import Home from "../routes/pages/Home";
+import { Outlet } from "@tanstack/react-router";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <body className="relative">
       <Navbar />
-      <Home />
+      <Outlet />
       <Footer />
     </body>
   );
