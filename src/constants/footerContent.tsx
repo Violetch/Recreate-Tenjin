@@ -43,13 +43,4 @@ export const FOOTER_CONTENT = [
       </p>
     ),
   },
-  {
-    icon: <FaInstagramSquare />,
-  },
-  {
-    icon: <FaYoutube />,
-  },
-  {
-    icon: <FaTiktok />,
-  },
 ];
