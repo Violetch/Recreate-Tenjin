@@ -11,54 +11,40 @@ const Footer = () => {
   const newYear = new Date().getFullYear();
 
   return (
-    <section className="flex flex-col mt-[25px] w-full">
-      <div className="flex flex-col justify-between w-full bg-neutral-900 text-neutral-100 px-[50px] py-1 pb-10">
-        <div className="flex flex-col w-[1175px] mx-auto">
-          <div className="flex justify-between">
-            {FOOTER_CONTENT.map((item, index) => (
-              <ul className="flex flex-col pb-10 pt-3 gap-3" key={index}>
-                <li className="text-xl font-semibold">{item.title}</li>
-                <li className="flex flex-col mt-2 gap-3 text-neutral-400">
-                  {Array.isArray(item.desc) ? (
-                    <>
-                      {item.desc.map((item, index) => (
-                        <li
-                          className="hover:underline hover:underline-offset-3 cursor-pointer hover:text-neutral-100"
-                          key={index}
-                        >
-                          {item.each}
-                        </li>
-                      ))}
-                    </>
-                  ) : (
-                    <li>{item.desc}</li>
-                  )}
-                </li>
-              </ul>
-            ))}
+    <div>
+      <div className="flex flex-col justify-between w-full bg-neutral-900 text-neutral-100 px-[250px] py-1 pb-10">
+        <div className="flex justify-between">
+          {FOOTER_CONTENT.map((item, index) => (
+            <ul className="flex flex-col pb-10 pt-3 gap-3" key={index}>
+              <li className="text-xl font-semibold">{item.title}</li>
+              <li className="flex flex-col mt-2 gap-3 text-neutral-400">
+                {Array.isArray(item.desc) ? (
+                  <>
+                    {item.desc.map((item, index) => (
+                      <li key={index}>{item.each}</li>
+                    ))}
+                  </>
+                ) : (
+                  <li>{item.desc}</li>
+                )}
+              </li>
+            </ul>
+          ))}
+        </div>
+        <div className="flex justify-between items-start bg-neutral-900">
+          <div className="flex flex-col gap-3">
+            <h1 className="text-[18px] font-semibold">
+              Subscribe to our emails
+            </h1>
+            <input
+              className="w-[370px] px-5 py-2 border-neutral-400 border-[1px]"
+              type="email"
+              placeholder="Email"
+            />
           </div>
-          <div className="flex justify-between items-center bg-neutral-900">
-            <div className="flex flex-col gap-4">
-              <h1 className="text-[18px] font-semibold">
-                Subscribe to our emails
-              </h1>
-              <div className="relative">
-                <input
-                  className="w-[360px] px-5 py-3 border-neutral-400 border-[1px] hover:border-[2px]"
-                  type="email"
-                  placeholder="Email"
-                />
-                <GoArrowRight
-                  className="absolute text-neutral-300 inset-y-[15px] inset-x-[90%]"
-                  size={"20px"}
-                />
-              </div>
-            </div>
-            <div className="flex gap-5">
-              <FaInstagramSquare className="hover:size-[21px]" size={"19px"} />
-              <FaTiktok className="hover:size-[21px]" size={"19px"} />
-              <FaYoutube className="hover:size-[21px]" size={"19px"} />
-            </div>
+          <div className="flex gap-3">
+            <h1>instagram</h1>
+            <h1>Youtube</h1>
           </div>
         </div>
       </div>
