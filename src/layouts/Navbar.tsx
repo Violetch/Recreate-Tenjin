@@ -5,14 +5,14 @@ import { PiShoppingBagOpenThin } from "react-icons/pi";
 
 const Navbar = () => {
   return (
-    <section className="flex flex-col justify-center items-center w-full bg-white text-neutral-900">
+    <section className="flex flex-col bg-white text-neutral-900">
       <div className="flex justify-center text-sm tracking-wider font-semibold py-2 bg-neutral-900 min-w-full">
         <p className="text-neutral-100 ">
           Welcome to Tenjin Style & Scrollworks Store
         </p>
       </div>
-      <div className="flex justify-between items-center min-w-full px-[250px] py-7 border border-b-[1px]">
-        <div>
+      <div className="flex justify-between min-w-full px-[50px] py-7 border border-b-[1px]">
+        <div className="flex justify-between w-[1400px] mx-auto">
           <ul className="flex justify-center items-center gap-7">
             <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
 
@@ -28,11 +28,11 @@ const Navbar = () => {
             <li>Contact</li>
             <li>About Us</li>
           </ul>
-        </div>
-        <div className="flex justify-center items-center gap-5">
-          <IoIosSearch size={"24px"} />
-          <CiUser size={"24px"} />
-          <PiShoppingBagOpenThin size={"24px"} />
+          <div className="flex justify-center items-center gap-5">
+            <IoIosSearch size={"24px"} />
+            <CiUser size={"24px"} />
+            <PiShoppingBagOpenThin size={"24px"} />
+          </div>
         </div>
       </div>
     </section>

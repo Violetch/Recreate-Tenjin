@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 const Layout = () => {
   return (
-    <body className="relative">
+    <body className="flex flex-col relative overflow-hidden">
       <Navbar />
       <Outlet />
       <Footer />
