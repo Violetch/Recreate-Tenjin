@@ -1,5 +1,11 @@
-import { FaPaypal } from "react-icons/fa";
+import {
+  FaInstagramSquare,
+  FaPaypal,
+  FaTiktok,
+  FaYoutube,
+} from "react-icons/fa";
 import { FOOTER_CONTENT } from "../constants/footerContent";
+import { GoArrowRight } from "react-icons/go";
 
 const Footer = () => {
   const newYear = new Date().getFullYear();
@@ -15,7 +21,12 @@ const Footer = () => {
                 {Array.isArray(item.desc) ? (
                   <>
                     {item.desc.map((item, index) => (
-                      <li key={index}>{item.each}</li>
+                      <li
+                        className="hover:text-neutral-100 hover:underline cursor-pointer"
+                        key={index}
+                      >
+                        {item.each}
+                      </li>
                     ))}
                   </>
                 ) : (
@@ -25,20 +36,27 @@ const Footer = () => {
             </ul>
           ))}
         </div>
-        <div className="flex justify-between items-start bg-neutral-900">
-          <div className="flex flex-col gap-3">
+        <div className="flex justify-between items-center">
+          <div className="flex flex-col gap-4">
             <h1 className="text-[18px] font-semibold">
               Subscribe to our emails
             </h1>
-            <input
-              className="w-[370px] px-5 py-2 border-neutral-400 border-[1px]"
-              type="email"
-              placeholder="Email"
-            />
+            <div className="border-neutral-500 border-[1px] hover:border-[2px] relative">
+              <input
+                className="w-[360px] px-5 py-3"
+                type="email"
+                placeholder="Email"
+              />
+              <GoArrowRight
+                className="absolute inset-y-[14px] inset-x-[91%]"
+                size={"19px"}
+              />
+            </div>
           </div>
-          <div className="flex gap-3">
-            <h1>instagram</h1>
-            <h1>Youtube</h1>
+          <div className="flex gap-7">
+            <FaInstagramSquare className="hover:size-5" size={"19px"} />
+            <FaYoutube className="hover:size-5" size={"19px"} />
+            <FaTiktok className="hover:size-5" size={"19px"} />
           </div>
         </div>
       </div>
