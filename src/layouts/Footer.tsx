@@ -22,18 +22,18 @@ const Footer = () => {
                   {Array.isArray(item.desc) ? (
                     <>
                       {item.desc.map((item, index) => (
-                        <li
+                        <span
                           className="hover:text-neutral-100 hover:underline cursor-pointer"
                           key={index}
                         >
                           {item.each}
-                        </li>
+                        </span>
                       ))}
                     </>
                   ) : (
-                    <li className="md:w-[clamp(150px,25vw,315px)]">
+                    <span className="md:w-[clamp(150px,25vw,315px)]">
                       {item.desc}
-                    </li>
+                    </span>
                   )}
                 </li>
               </ul>
