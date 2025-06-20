@@ -11,8 +11,8 @@ const Navbar = () => {
           Welcome to Tenjin Style & Scrollworks Store
         </p>
       </div>
-      <div className="flex justify-between items-center min-w-full px-[250px] py-7 border border-b-[1px]">
-        <div>
+      <div className="flex justify-between items-center w-full px-[50px] py-7 border border-b-[1px]">
+        <div className="flex justify-between max-w-[1400px] w-full mx-auto">
           <ul className="flex justify-center items-center gap-7">
             <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
 
@@ -28,11 +28,11 @@ const Navbar = () => {
             <li>Contact</li>
             <li>About Us</li>
           </ul>
-        </div>
-        <div className="flex justify-center items-center gap-5">
-          <IoIosSearch size={"24px"} />
-          <CiUser size={"24px"} />
-          <PiShoppingBagOpenThin size={"24px"} />
+          <div className="flex justify-center items-center gap-5">
+            <IoIosSearch size={"24px"} />
+            <CiUser size={"24px"} />
+            <PiShoppingBagOpenThin size={"24px"} />
+          </div>
         </div>
       </div>
     </section>
