@@ -12,9 +12,9 @@ const Footer = () => {
 
   return (
     <div>
-      <div className="flex flex-col justify-between w-full bg-neutral-900 text-neutral-100 px-[50px] py-1 pb-10">
+      <div className="flex justify-between w-full bg-neutral-900 text-neutral-100 px-[40px] md:px-[50px] py-1 pb-10">
         <div className="w-full max-w-[1400px] mx-auto">
-          <div className="flex justify-between">
+          <div className="flex flex-col md:flex-row justify-between">
             {FOOTER_CONTENT.map((item, index) => (
               <ul className="flex flex-col pb-10 pt-3 gap-3" key={index}>
                 <li className="text-xl font-semibold">{item.title}</li>
@@ -31,25 +31,27 @@ const Footer = () => {
                       ))}
                     </>
                   ) : (
-                    <li>{item.desc}</li>
+                    <li className="md:w-[clamp(150px,25vw,315px)]">
+                      {item.desc}
+                    </li>
                   )}
                 </li>
               </ul>
             ))}
           </div>
-          <div className="flex justify-between items-center">
-            <div className="flex flex-col gap-4">
+          <div className="flex flex-col md:flex-row gap-10 md:gap-0 justify-between items-center">
+            <div className="flex flex-col items-center md:items-start gap-4">
               <h1 className="text-[18px] font-semibold">
                 Subscribe to our emails
               </h1>
               <div className="border-neutral-500 border-[1px] hover:border-[2px] relative">
                 <input
-                  className="w-[360px] px-5 py-3"
+                  className="w-full max-w-[260px] md:w-[360px] px-5 py-3"
                   type="email"
                   placeholder="Email"
                 />
                 <GoArrowRight
-                  className="absolute inset-y-[14px] inset-x-[91%]"
+                  className="absolute inset-y-[14px] inset-x-[88%] md:inset-x-[91%]"
                   size={"19px"}
                 />
               </div>

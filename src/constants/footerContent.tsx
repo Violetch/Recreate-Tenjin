@@ -38,7 +38,7 @@ export const FOOTER_CONTENT = [
     desc: (
       <p>
         Japanese-inspired life style brand born from <br /> collaborative
-        prowess and fliring <br /> aspirations. We aim to bring selection of{" "}
+        prowess and fliring <br /> aspirations. We aim to bring selection of
         <br /> finely crafted goods to aid your day-to-day <br /> performances.
       </p>
     ),
