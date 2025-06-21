@@ -57,9 +57,9 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex gap-7">
-              <FaInstagramSquare className="hover:size-5" size={"19px"} />
-              <FaYoutube className="hover:size-5" size={"19px"} />
-              <FaTiktok className="hover:size-5" size={"19px"} />
+              <FaInstagramSquare className="hover:scale-110" size={"19px"} />
+              <FaYoutube className="hover:scale-110" size={"19px"} />
+              <FaTiktok className="hover:scale-110" size={"19px"} />
             </div>
           </div>
         </div>
