@@ -129,6 +129,7 @@ export const NavbarSmallScreen = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <div></div>
     </section>
   );
 };
