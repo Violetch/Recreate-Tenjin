@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
 import { IoIosSearch } from "react-icons/io";
@@ -10,38 +10,103 @@ import { FaInstagramSquare, FaTiktok, FaYoutube } from "react-icons/fa";
 import { GoArrowRight } from "react-icons/go";
 
 export const NavbarBigScreen = () => {
-  return (
-    <section className="flex flex-col fixed inset-x-0 bg-white text-neutral-900">
-      <div className="flex justify-center text-sm tracking-wider font-semibold py-2 bg-neutral-900 min-w-full">
-        <p className="text-neutral-100 ">
-          Welcome to Tenjin Style & Scrollworks Store
-        </p>
-      </div>
-      <div className="flex justify-between min-w-full px-[50px] py-7 border border-b-[1px]">
-        <div className="flex justify-between w-full max-w-[1400px] mx-auto">
-          <ul className="flex justify-center items-center gap-7">
-            <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
+  const navbarRef = useRef<HTMLDivElement | null>(null);
+  const [showFixedNavbar, setShowFixedNavbar] = useState<boolean>(false);
+  const [lastScrollY, setLastScrollY] = useState<number>(0);
+  const [navbarHeight, setNavbarHeight] = useState<number>(0);
 
-            <li className="cursor-pointer">All Products</li>
-            <li className="cursor-pointer">Style</li>
-            <li className="flex items-center gap-2">
-              ScrollWorks
-              <span className="cursor-pointer">
-                <BsChevronDown size={"11px"} />
-              </span>
-            </li>
-            <li className="cursor-pointer">Discord</li>
-            <li className="cursor-pointer">Contact</li>
-            <li className="cursor-pointer">About Us</li>
-          </ul>
-          <div className="flex justify-center items-center gap-5">
-            <IoIosSearch size={"24px"} />
-            <CiUser size={"24px"} />
-            <PiShoppingBagOpenThin size={"24px"} />
+  useEffect(() => {
+    if (navbarRef.current) {
+      setNavbarHeight(navbarRef.current.offsetHeight);
+    }
+
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll === 0) {
+        setShowFixedNavbar(false);
+      } else if (currentScroll > navbarHeight) {
+        if (currentScroll < lastScrollY) {
+          setShowFixedNavbar(true);
+        } else {
+          setShowFixedNavbar(false);
+        }
+      }
+
+      setLastScrollY(currentScroll);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, navbarHeight]);
+
+  return (
+    <>
+      <section
+        className={`flex flex-col bg-white text-neutral-900`}
+        ref={navbarRef}
+      >
+        <div className="flex justify-center text-sm tracking-wider font-semibold py-2 bg-neutral-900 min-w-full">
+          <p className="text-neutral-100 ">
+            Welcome to Tenjin Style & Scrollworks Store
+          </p>
+        </div>
+        <div className="flex justify-between min-w-full px-[50px] py-7 border border-b-[1px]">
+          <div className="flex justify-between w-full max-w-[1400px] mx-auto">
+            <ul className="flex justify-center items-center gap-7">
+              <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
+
+              <li className="cursor-pointer">All Products</li>
+              <li className="cursor-pointer">Style</li>
+              <li className="flex items-center gap-2">
+                ScrollWorks
+                <span className="cursor-pointer">
+                  <BsChevronDown size={"11px"} />
+                </span>
+              </li>
+              <li className="cursor-pointer">Discord</li>
+              <li className="cursor-pointer">Contact</li>
+              <li className="cursor-pointer">About Us</li>
+            </ul>
+            <div className="flex justify-center items-center gap-5">
+              <IoIosSearch size={"24px"} />
+              <CiUser size={"24px"} />
+              <PiShoppingBagOpenThin size={"24px"} />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      {showFixedNavbar && (
+        <section
+          className={`flex flex-col fixed inset-x-0 bg-white text-neutral-900 transition-all duration-300`}
+        >
+          <div className="flex justify-between min-w-full px-[50px] py-7 border border-b-[1px]">
+            <div className="flex justify-between w-full max-w-[1400px] mx-auto">
+              <ul className="flex justify-center items-center gap-7">
+                <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
+
+                <li className="cursor-pointer">All Products</li>
+                <li className="cursor-pointer">Style</li>
+                <li className="flex items-center gap-2">
+                  ScrollWorks
+                  <span className="cursor-pointer">
+                    <BsChevronDown size={"11px"} />
+                  </span>
+                </li>
+                <li className="cursor-pointer">Discord</li>
+                <li className="cursor-pointer">Contact</li>
+                <li className="cursor-pointer">About Us</li>
+              </ul>
+              <div className="flex justify-center items-center gap-5">
+                <IoIosSearch size={"24px"} />
+                <CiUser size={"24px"} />
+                <PiShoppingBagOpenThin size={"24px"} />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   );
 };
 
@@ -57,7 +122,7 @@ export const NavbarSmallScreen = () => {
   }, [isMenu]);
 
   return (
-    <section className="fixed inset-x-0">
+    <section className="">
       <div className="flex flex-col relative z-50 bg-white">
         <div className="flex justify-center text-sm tracking-wider font-semibold py-2 bg-neutral-900 min-w-full">
           <p className="text-neutral-100 text-[13px]">
