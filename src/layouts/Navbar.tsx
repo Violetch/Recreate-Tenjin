@@ -8,6 +8,7 @@ import { useMediaQuery } from "react-responsive";
 import { AnimatePresence, motion } from "motion/react";
 import { FaInstagramSquare, FaTiktok, FaYoutube } from "react-icons/fa";
 import { GoArrowRight } from "react-icons/go";
+import { Link } from "@tanstack/react-router";
 
 export const NavbarBigScreen = () => {
   const navbarRef = useRef<HTMLDivElement | null>(null);
@@ -54,8 +55,9 @@ export const NavbarBigScreen = () => {
         <div className="flex justify-between min-w-full px-[50px] py-7 border border-b-[1px]">
           <div className="flex justify-between w-full max-w-[1400px] mx-auto">
             <ul className="flex justify-center items-center gap-7">
-              <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
-
+              <Link to="/" aria-lebel="Go to Home">
+                <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
+              </Link>
               <li className="cursor-pointer">All Products</li>
               <li className="cursor-pointer">Style</li>
               <li className="flex items-center gap-2">
@@ -69,11 +71,18 @@ export const NavbarBigScreen = () => {
               <li className="cursor-pointer">About Us</li>
             </ul>
             <div className="flex justify-center items-center gap-5">
-              <IoIosSearch className="hover:scale-110" size={"24px"} />
-              <CiUser className="hover:scale-110" size={"24px"} />
+              <IoIosSearch
+                className="hover:scale-110"
+                size={"24px"}
+                aria-lebel="Search"
+              />
+              <Link to="/account/login" aria-lebel="Go to Login">
+                <CiUser className="hover:scale-110" size={"24px"} />
+              </Link>
               <PiShoppingBagOpenThin
                 className="hover:scale-110"
                 size={"27px"}
+                aria-lebel="Go to Cart"
               />
             </div>
           </div>
@@ -86,8 +95,9 @@ export const NavbarBigScreen = () => {
           <div className="flex justify-between min-w-full px-[50px] py-7 border border-b-[1px]">
             <div className="flex justify-between w-full max-w-[1400px] mx-auto">
               <ul className="flex justify-center items-center gap-7">
-                <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
-
+                <Link to="/" aria-lebel="Go to Home">
+                  <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
+                </Link>
                 <li className="cursor-pointer">All Products</li>
                 <li className="cursor-pointer">Style</li>
                 <li className="flex items-center gap-2">
@@ -102,7 +112,9 @@ export const NavbarBigScreen = () => {
               </ul>
               <div className="flex justify-center items-center gap-5">
                 <IoIosSearch className="hover:scale-110" size={"24px"} />
-                <CiUser className="hover:scale-110" size={"24px"} />
+                <Link to="/account/login">
+                  <CiUser className="hover:scale-110" size={"24px"} />
+                </Link>
                 <PiShoppingBagOpenThin
                   className="hover:scale-110"
                   size={"27px"}
@@ -181,17 +193,21 @@ export const NavbarSmallScreen = () => {
                 onClick={() => setIsMenu(!isMenu)}
                 size={"24px"}
               />
-              <img className="" src="Tenjin-1.avif" alt="Tenjin" />
+              <Link to="/">
+                <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
+              </Link>
               <div className="flex justify-center items-center gap-5">
                 <IoIosSearch
                   className="hover:scale-110 cursor-pointer"
                   size={"24px"}
                 />
                 {!is663 && (
-                  <CiUser
-                    className="hover:scale-110 cursor-pointer"
-                    size={"24px"}
-                  />
+                  <Link to="/account/login">
+                    <CiUser
+                      className="hover:scale-110 cursor-pointer"
+                      size={"24px"}
+                    />
+                  </Link>
                 )}
                 <PiShoppingBagOpenThin
                   className="hover:scale-110 cursor-pointer"
@@ -240,7 +256,12 @@ export const NavbarSmallScreen = () => {
                 <div className="flex flex-col items-start mt-auto gap-10 px-8 py-8 bg-neutral-100">
                   {is663 && (
                     <div className="flex justify-center gap-2 cursor-pointer group">
-                      <CiUser className="group-hover:scale-110" size={"24px"} />
+                      <Link to="/account/login">
+                        <CiUser
+                          className="group-hover:scale-110"
+                          size={"24px"}
+                        />
+                      </Link>
                       <p className="text-[16px] font-semibold">Log in</p>
                     </div>
                   )}
@@ -248,9 +269,18 @@ export const NavbarSmallScreen = () => {
                     <FaInstagramSquare
                       className="hover:scale-110"
                       size={"19px"}
+                      aria-lebel="Go to instagram"
                     />
-                    <FaTiktok className="hover:scale-110" size={"19px"} />
-                    <FaYoutube className="hover:scale-110" size={"19px"} />
+                    <FaTiktok
+                      className="hover:scale-110"
+                      size={"19px"}
+                      aria-lebel="Go to Tiktok"
+                    />
+                    <FaYoutube
+                      className="hover:scale-110"
+                      size={"19px"}
+                      aria-lebel="Go to Youtube"
+                    />
                   </div>
                 </div>
               </ul>
@@ -270,12 +300,21 @@ export const NavbarSmallScreen = () => {
                 <RxHamburgerMenu
                   onClick={() => setIsMenu(!isMenu)}
                   size={"24px"}
+                  aria-lebel="Open hamburger menu"
                 />
-                <img className="" src="Tenjin-1.avif" alt="Tenjin" />
+                <Link to="/">
+                  <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
+                </Link>
                 <div className="flex justify-center items-center gap-5">
-                  <IoIosSearch className="cursor-pointer" size={"24px"} />
+                  <IoIosSearch
+                    className="cursor-pointer"
+                    size={"24px"}
+                    aria-lebel="Search"
+                  />
                   {!is663 && (
-                    <CiUser className="cursor-pointer" size={"24px"} />
+                    <Link to="/account/login" aria-lebel="Go to Login">
+                      <CiUser className="cursor-pointer" size={"24px"} />
+                    </Link>
                   )}
                   <PiShoppingBagOpenThin
                     className="cursor-pointer"
@@ -323,21 +362,34 @@ export const NavbarSmallScreen = () => {
                   </li>
                   <div className="flex flex-col items-start mt-auto gap-10 px-8 py-8 bg-neutral-100">
                     {is663 && (
-                      <div className="flex justify-center gap-2 cursor-pointer group">
+                      <Link
+                        className="flex justify-center gap-2 cursor-pointer group"
+                        to="/account/login"
+                        aria-lebel="Go to Login"
+                      >
                         <CiUser
                           className="group-hover:scale-110"
                           size={"24px"}
                         />
                         <p className="text-[16px] font-semibold">Log in</p>
-                      </div>
+                      </Link>
                     )}
                     <div className="flex justify-center gap-6">
                       <FaInstagramSquare
                         className="hover:scale-110"
                         size={"19px"}
+                        aria-lebel="Go to Instagram"
                       />
-                      <FaTiktok className="hover:scale-110" size={"19px"} />
-                      <FaYoutube className="hover:scale-110" size={"19px"} />
+                      <FaTiktok
+                        className="hover:scale-110"
+                        size={"19px"}
+                        aria-lebel="Go to Tiktok"
+                      />
+                      <FaYoutube
+                        className="hover:scale-110"
+                        size={"19px"}
+                        aria-lebel="Go to Youtube"
+                      />
                     </div>
                   </div>
                 </ul>

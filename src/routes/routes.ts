@@ -6,6 +6,7 @@ import {
 import Layout from "../layouts/Layout";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
 
 const rootRoute = createRootRoute({
   component: Layout,
@@ -18,6 +19,12 @@ const HomeRoute = createRoute({
   component: Home,
 });
 
-const routeTree = rootRoute.addChildren([HomeRoute]);
+const LoginRoute = createRoute({
+  path: "/account/login",
+  getParentRoute: () => rootRoute,
+  component: Login,
+});
+
+const routeTree = rootRoute.addChildren([HomeRoute, LoginRoute]);
 
 export const router = createRouter({ routeTree });
