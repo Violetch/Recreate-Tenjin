@@ -69,9 +69,12 @@ export const NavbarBigScreen = () => {
               <li className="cursor-pointer">About Us</li>
             </ul>
             <div className="flex justify-center items-center gap-5">
-              <IoIosSearch size={"24px"} />
-              <CiUser size={"24px"} />
-              <PiShoppingBagOpenThin size={"24px"} />
+              <IoIosSearch className="hover:scale-110" size={"24px"} />
+              <CiUser className="hover:scale-110" size={"24px"} />
+              <PiShoppingBagOpenThin
+                className="hover:scale-110"
+                size={"27px"}
+              />
             </div>
           </div>
         </div>
@@ -98,9 +101,12 @@ export const NavbarBigScreen = () => {
                 <li className="cursor-pointer">About Us</li>
               </ul>
               <div className="flex justify-center items-center gap-5">
-                <IoIosSearch size={"24px"} />
-                <CiUser size={"24px"} />
-                <PiShoppingBagOpenThin size={"24px"} />
+                <IoIosSearch className="hover:scale-110" size={"24px"} />
+                <CiUser className="hover:scale-110" size={"24px"} />
+                <PiShoppingBagOpenThin
+                  className="hover:scale-110"
+                  size={"27px"}
+                />
               </div>
             </div>
           </div>
@@ -118,10 +124,6 @@ export const NavbarSmallScreen = () => {
   const [showFixedNavbar, setShowFixedNavbar] = useState<boolean>(false);
   const [navbarHeight, setNavbarHeight] = useState<number>(0);
   const [lastScrollY, setLastScrollY] = useState<number>(0);
-
-  // console.log(showFixedNavbar);
-  // console.log(navbarHeight);
-  // console.log(lastScrollY);
 
   useEffect(() => {
     if (navbarRef.current) {
@@ -181,15 +183,19 @@ export const NavbarSmallScreen = () => {
               />
               <img className="" src="Tenjin-1.avif" alt="Tenjin" />
               <div className="flex justify-center items-center gap-5">
-                <IoIosSearch className="cursor-pointer" size={"24px"} />
-                {is663 ? (
-                  <></>
-                ) : (
-                  <CiUser className="cursor-pointer" size={"24px"} />
+                <IoIosSearch
+                  className="hover:scale-110 cursor-pointer"
+                  size={"24px"}
+                />
+                {!is663 && (
+                  <CiUser
+                    className="hover:scale-110 cursor-pointer"
+                    size={"24px"}
+                  />
                 )}
                 <PiShoppingBagOpenThin
-                  className="cursor-pointer"
-                  size={"24px"}
+                  className="hover:scale-110 cursor-pointer"
+                  size={"27px"}
                 />
               </div>
             </div>
@@ -198,9 +204,9 @@ export const NavbarSmallScreen = () => {
         <AnimatePresence>
           {isMenu && (
             <motion.div
-              initial={{ translate: "-100%" }}
-              animate={{ translate: 0 }}
-              exit={{ translate: "-100%" }}
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
               transition={{ duration: 0.2 }}
               className={`flex fixed w-full ${
                 is748 ? "max-w-[95%]" : "max-w-[400px]"
@@ -231,13 +237,21 @@ export const NavbarSmallScreen = () => {
                 <li className="cursor-pointer px-8 py-2  hover:bg-neutral-100">
                   About Us
                 </li>
-                <div className="flex items-center mt-auto gap-6 px-8 py-8 bg-neutral-100">
-                  <FaInstagramSquare
-                    className="hover:scale-110"
-                    size={"19px"}
-                  />
-                  <FaTiktok className="hover:scale-110" size={"19px"} />
-                  <FaYoutube className="hover:scale-110" size={"19px"} />
+                <div className="flex flex-col items-start mt-auto gap-10 px-8 py-8 bg-neutral-100">
+                  {is663 && (
+                    <div className="flex justify-center gap-2 cursor-pointer group">
+                      <CiUser className="group-hover:scale-110" size={"24px"} />
+                      <p className="text-[16px] font-semibold">Log in</p>
+                    </div>
+                  )}
+                  <div className="flex justify-center gap-6">
+                    <FaInstagramSquare
+                      className="hover:scale-110"
+                      size={"19px"}
+                    />
+                    <FaTiktok className="hover:scale-110" size={"19px"} />
+                    <FaYoutube className="hover:scale-110" size={"19px"} />
+                  </div>
                 </div>
               </ul>
             </motion.div>
@@ -246,10 +260,7 @@ export const NavbarSmallScreen = () => {
       </section>
       {showFixedNavbar && (
         <section>
-          <div
-            className="flex flex-col fixed inset-x-0 top-0 z-50 bg-white"
-            ref={navbarRef}
-          >
+          <div className="flex flex-col fixed inset-x-0 top-0 z-50 bg-white">
             <div
               className={`flex justify-center min-w-full ${
                 is663 ? "px-[10px]" : "px-[30px]"
@@ -263,9 +274,7 @@ export const NavbarSmallScreen = () => {
                 <img className="" src="Tenjin-1.avif" alt="Tenjin" />
                 <div className="flex justify-center items-center gap-5">
                   <IoIosSearch className="cursor-pointer" size={"24px"} />
-                  {is663 ? (
-                    <></>
-                  ) : (
+                  {!is663 && (
                     <CiUser className="cursor-pointer" size={"24px"} />
                   )}
                   <PiShoppingBagOpenThin
@@ -312,13 +321,24 @@ export const NavbarSmallScreen = () => {
                   <li className="cursor-pointer px-8 py-2  hover:bg-neutral-100">
                     About Us
                   </li>
-                  <div className="flex items-center mt-auto gap-6 px-8 py-8 bg-neutral-100">
-                    <FaInstagramSquare
-                      className="hover:scale-110"
-                      size={"19px"}
-                    />
-                    <FaTiktok className="hover:scale-110" size={"19px"} />
-                    <FaYoutube className="hover:scale-110" size={"19px"} />
+                  <div className="flex flex-col items-start mt-auto gap-10 px-8 py-8 bg-neutral-100">
+                    {is663 && (
+                      <div className="flex justify-center gap-2 cursor-pointer group">
+                        <CiUser
+                          className="group-hover:scale-110"
+                          size={"24px"}
+                        />
+                        <p className="text-[16px] font-semibold">Log in</p>
+                      </div>
+                    )}
+                    <div className="flex justify-center gap-6">
+                      <FaInstagramSquare
+                        className="hover:scale-110"
+                        size={"19px"}
+                      />
+                      <FaTiktok className="hover:scale-110" size={"19px"} />
+                      <FaYoutube className="hover:scale-110" size={"19px"} />
+                    </div>
                   </div>
                 </ul>
               </motion.div>
