@@ -1,7 +1,8 @@
 import { Outlet } from "@tanstack/react-router";
-import Footer from "./Footer";
-import { NavbarBigScreen, NavbarSmallScreen } from "./Navbar";
 import { useMediaQuery } from "react-responsive";
+import NavbarSmallScreen from "./navbar/NavbarSmallScreen";
+import NavbarBigScreen from "./navbar/NavbarBigScreen";
+import Footer from "./Footer";
 
 const Layout = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 1030px)" });
