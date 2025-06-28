@@ -8,10 +8,14 @@ import { Link } from "@tanstack/react-router";
 import { IoIosSearch } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { PiShoppingBagOpenThin } from "react-icons/pi";
+import { useAtom } from "jotai";
+import { isSearchAtom } from "../../jotai";
+import NavbarSearch from "./NavbarSearch";
 
 const NavbarSmallScreen = () => {
   const is663 = useMediaQuery({ query: "(max-width: 663px)" });
   const is748 = useMediaQuery({ query: "(max-width: 748px)" });
+  const [isSearch, setIsSearch] = useAtom(isSearchAtom);
   const [isMenu, setIsMenu] = useState(false);
   const navbarRef = useRef<HTMLDivElement | null>(null);
   const [showFixedNavbar, setShowFixedNavbar] = useState<boolean>(false);
@@ -44,16 +48,10 @@ const NavbarSmallScreen = () => {
   }, [navbarHeight, lastScrollY]);
 
   useEffect(() => {
-    const html = document.documentElement;
-
-    if (isMenu) {
-      html.style.overflow = "hidden";
-      document.body.style.overflow = "hidden";
-    } else {
-      html.style.overflow = "auto";
-      document.body.style.overflow = "auto";
-    }
-  }, [isMenu]);
+    isMenu || isSearch
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  }, [isMenu, isSearch]);
 
   return (
     <>
@@ -65,10 +63,12 @@ const NavbarSmallScreen = () => {
             </p>
           </div>
           <div
-            className={`flex justify-center min-w-full ${
+            className={`flex justify-center min-w-full relative overflow-hidden ${
               is663 ? "px-[10px]" : "px-[30px]"
             } py-4 border border-b-[1px]`}
           >
+            {isSearch && <NavbarSearch />}
+
             <div className="flex justify-between items-center w-[1400px] mx-auto">
               <RxHamburgerMenu
                 onClick={() => setIsMenu(!isMenu)}
@@ -81,6 +81,7 @@ const NavbarSmallScreen = () => {
                 <IoIosSearch
                   className="hover:scale-110 cursor-pointer"
                   size={"24px"}
+                  onClick={() => setIsSearch(true)}
                 />
                 {!is663 && (
                   <Link to="/account/login">
@@ -173,10 +174,11 @@ const NavbarSmallScreen = () => {
         <section>
           <div className="flex flex-col fixed inset-x-0 top-0 z-50 bg-white">
             <div
-              className={`flex justify-center min-w-full ${
+              className={`flex justify-center min-w-full relative overflow-hidden  ${
                 is663 ? "px-[10px]" : "px-[30px]"
               } py-4 border border-b-[1px]`}
             >
+              {isSearch && <NavbarSearch />}
               <div className="flex justify-between items-center w-[1400px] mx-auto">
                 <RxHamburgerMenu
                   onClick={() => setIsMenu(!isMenu)}
@@ -188,17 +190,21 @@ const NavbarSmallScreen = () => {
                 </Link>
                 <div className="flex justify-center items-center gap-5">
                   <IoIosSearch
-                    className="cursor-pointer"
+                    className="hover:scale-110 cursor-pointer"
                     size={"24px"}
                     aria-lebel="Search"
+                    onClick={() => setIsSearch(true)}
                   />
                   {!is663 && (
                     <Link to="/account/login" aria-lebel="Go to Login">
-                      <CiUser className="cursor-pointer" size={"24px"} />
+                      <CiUser
+                        className="hover:scale-110 cursor-pointer"
+                        size={"24px"}
+                      />
                     </Link>
                   )}
                   <PiShoppingBagOpenThin
-                    className="cursor-pointer"
+                    className="hover:scale-110 cursor-pointer"
                     size={"24px"}
                   />
                 </div>

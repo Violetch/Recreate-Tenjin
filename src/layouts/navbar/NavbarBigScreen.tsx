@@ -40,16 +40,7 @@ export const NavbarBigScreen = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, navbarHeight]);
 
-  return isSearch ? (
-    <>
-      <div className="flex justify-center text-sm tracking-wider font-semibold py-2 bg-neutral-900 min-w-full">
-        <p className="text-neutral-100">
-          Welcome to Tenjin Style & Scrollworks Store
-        </p>
-      </div>
-      <NavbarSearch />
-    </>
-  ) : (
+  return (
     <>
       <section
         className="flex flex-col bg-white text-neutral-900"
@@ -60,7 +51,9 @@ export const NavbarBigScreen = () => {
             Welcome to Tenjin Style & Scrollworks Store
           </p>
         </div>
-        <div className="flex justify-between min-w-full px-[50px] py-7 border border-b-[1px]">
+
+        <div className="flex justify-between relative overflow-hidden min-w-full px-[50px] py-7 border border-b-[1px]">
+          {isSearch && <NavbarSearch />}
           <div className="flex justify-between w-full max-w-[1400px] mx-auto">
             <ul className="flex justify-center items-center gap-7">
               <Link to="/" aria-label="Go to Home">
@@ -100,7 +93,9 @@ export const NavbarBigScreen = () => {
 
       {showFixedNavbar && (
         <section className="flex flex-col fixed inset-x-0 bg-white text-neutral-900 transition-all duration-300 z-50">
-          <div className="flex justify-between min-w-full px-[50px] py-7 border border-b-[1px]">
+          <div className="flex justify-between min-w-full relative overflow-hidden px-[50px] py-7 border border-b-[1px]">
+            {isSearch && <NavbarSearch />}
+
             <div className="flex justify-between w-full max-w-[1400px] mx-auto">
               <ul className="flex justify-center items-center gap-7">
                 <Link to="/" aria-label="Go to Home">
