@@ -4,7 +4,11 @@ import { RxCross1 } from "react-icons/rx";
 import { isSearchAtom } from "../../jotai";
 import { motion } from "motion/react";
 
-const NavbarSearch = () => {
+interface NavbarStyleType {
+  style: string;
+}
+
+const NavbarSearch: React.FC<NavbarStyleType> = ({ style }) => {
   const [, setIsSearch] = useAtom(isSearchAtom);
 
   return (
@@ -15,11 +19,7 @@ const NavbarSearch = () => {
       transition={{ duration: 0.2 }}
     >
       <span className="flex relative">
-        <input
-          className="w-[765px] border-[1px] border-neutral-600 text-xl px-5 py-2"
-          type="text"
-          placeholder="Search"
-        />
+        <input className={`${style}`} type="text" placeholder="Search" />
         <IoIosSearch
           className="absolute inset-x-[95%] inset-y-1/2 -translate-y-1/2 hover:scale-110 cursor-pointer"
           size={"23"}

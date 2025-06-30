@@ -53,7 +53,9 @@ export const NavbarBigScreen = () => {
         </div>
 
         <div className="flex justify-between relative overflow-hidden min-w-full px-[50px] py-7 border border-b-[1px]">
-          {isSearch && <NavbarSearch />}
+          {isSearch && (
+            <NavbarSearch style="w-[765px] border-[1px] border-neutral-600 text-xl px-5 py-2" />
+          )}
           <div className="flex justify-between w-full max-w-[1400px] mx-auto">
             <ul className="flex justify-center items-center gap-7">
               <Link to="/" aria-label="Go to Home">
@@ -94,7 +96,9 @@ export const NavbarBigScreen = () => {
       {showFixedNavbar && (
         <section className="flex flex-col fixed inset-x-0 bg-white text-neutral-900 transition-all duration-300 z-50">
           <div className="flex justify-between min-w-full relative overflow-hidden px-[50px] py-7 border border-b-[1px]">
-            {isSearch && <NavbarSearch />}
+            {isSearch && (
+              <NavbarSearch style="w-[765px] border-[1px] border-neutral-600 text-xl px-5 py-2" />
+            )}
 
             <div className="flex justify-between w-full max-w-[1400px] mx-auto">
               <ul className="flex justify-center items-center gap-7">

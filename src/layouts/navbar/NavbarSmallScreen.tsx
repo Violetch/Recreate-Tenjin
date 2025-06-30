@@ -67,7 +67,9 @@ const NavbarSmallScreen = () => {
               is663 ? "px-[10px]" : "px-[30px]"
             } py-4 border border-b-[1px]`}
           >
-            {isSearch && <NavbarSearch />}
+            {isSearch && (
+              <NavbarSearch style="w-[100%] border-[1px] border-neutral-600 text-xl px-5 py-2" />
+            )}
 
             <div className="flex justify-between items-center w-[1400px] mx-auto">
               <RxHamburgerMenu
@@ -178,7 +180,9 @@ const NavbarSmallScreen = () => {
                 is663 ? "px-[10px]" : "px-[30px]"
               } py-4 border border-b-[1px]`}
             >
-              {isSearch && <NavbarSearch />}
+              {isSearch && (
+                <NavbarSearch style="w-[765px] border-[1px] border-neutral-600 text-xl px-5 py-2 " />
+              )}
               <div className="flex justify-between items-center w-[1400px] mx-auto">
                 <RxHamburgerMenu
                   onClick={() => setIsMenu(!isMenu)}
