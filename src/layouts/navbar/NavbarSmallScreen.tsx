@@ -67,9 +67,7 @@ const NavbarSmallScreen = () => {
               is663 ? "px-[10px]" : "px-[30px]"
             } py-4 border border-b-[1px]`}
           >
-            {isSearch && (
-              <NavbarSearch style="w-[100%] border-[1px] border-neutral-600 text-xl px-5 py-2" />
-            )}
+            {isSearch && <NavbarSearch />}
 
             <div className="flex justify-between items-center w-[1400px] mx-auto">
               <RxHamburgerMenu
@@ -93,10 +91,12 @@ const NavbarSmallScreen = () => {
                     />
                   </Link>
                 )}
-                <PiShoppingBagOpenThin
-                  className="hover:scale-110 cursor-pointer"
-                  size={"27px"}
-                />
+                <Link to="/cart">
+                  <PiShoppingBagOpenThin
+                    className="hover:scale-110 cursor-pointer"
+                    size={"27px"}
+                  />
+                </Link>
               </div>
             </div>
           </div>
@@ -180,9 +180,7 @@ const NavbarSmallScreen = () => {
                 is663 ? "px-[10px]" : "px-[30px]"
               } py-4 border border-b-[1px]`}
             >
-              {isSearch && (
-                <NavbarSearch style="w-[765px] border-[1px] border-neutral-600 text-xl px-5 py-2 " />
-              )}
+              {isSearch && <NavbarSearch />}
               <div className="flex justify-between items-center w-[1400px] mx-auto">
                 <RxHamburgerMenu
                   onClick={() => setIsMenu(!isMenu)}
@@ -207,10 +205,12 @@ const NavbarSmallScreen = () => {
                       />
                     </Link>
                   )}
-                  <PiShoppingBagOpenThin
-                    className="hover:scale-110 cursor-pointer"
-                    size={"24px"}
-                  />
+                  <Link to="/cart">
+                    <PiShoppingBagOpenThin
+                      className="hover:scale-110 cursor-pointer"
+                      size={"24px"}
+                    />
+                  </Link>
                 </div>
               </div>
             </div>

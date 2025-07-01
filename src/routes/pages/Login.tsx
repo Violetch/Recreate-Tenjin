@@ -1,17 +1,40 @@
 import { Link } from "@tanstack/react-router";
+import { useMediaQuery } from "react-responsive";
+import { clsx } from "clsx";
 
 const Login = () => {
+  const is748 = useMediaQuery({ query: "(max-width: 748px)" });
+
   return (
-    <section className="flex flex-col justify-center items-center gap-10 py-10">
-      <h1 className="text-[2.7em] font-semibold">Login</h1>
-      <div className="flex flex-col gap-4">
+    <section className="flex flex-col justify-center items-center gap-10 py-10 px-4">
+      <h1
+        className={clsx("font-semibold", {
+          "text-[2.7em]": !is748,
+          "text-[2em]": is748,
+        })}
+      >
+        Login
+      </h1>
+      <div className="flex items-center w-full flex-col gap-4">
         <input
-          className="w-[450px] text-[18px] border hover:border-2 bover:border-neutral-900 border-neutral-500 px-5 py-3"
+          className={clsx(
+            "text-[18px] border hover:border-2 bover:border-neutral-900 border-neutral-500 px-5 py-3",
+            {
+              "w-[450px]": !is748,
+              "w-full max-w-[300px]": is748,
+            }
+          )}
           type="email"
           placeholder="Email"
         />
         <input
-          className="w-[450px] text-[18px] border hover:border-2 bover:border-neutral-900 border-neutral-500 px-5 py-3"
+          className={clsx(
+            "text-[18px] border hover:border-2 bover:border-neutral-900 border-neutral-500 px-5 py-3",
+            {
+              "w-[450px]": !is748,
+              "w-full max-w-[300px]": is748,
+            }
+          )}
           type="password"
           placeholder="Password"
         />

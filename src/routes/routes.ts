@@ -7,6 +7,7 @@ import Layout from "../layouts/Layout";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import Cart from "./pages/Cart";
 
 const rootRoute = createRootRoute({
   component: Layout,
@@ -25,6 +26,12 @@ const LoginRoute = createRoute({
   component: Login,
 });
 
-const routeTree = rootRoute.addChildren([HomeRoute, LoginRoute]);
+const CartRoute = createRoute({
+  path: "/cart",
+  getParentRoute: () => rootRoute,
+  component: Cart,
+});
+
+const routeTree = rootRoute.addChildren([HomeRoute, LoginRoute, CartRoute]);
 
 export const router = createRouter({ routeTree });

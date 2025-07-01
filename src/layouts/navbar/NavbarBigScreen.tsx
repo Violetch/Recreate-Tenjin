@@ -53,9 +53,7 @@ export const NavbarBigScreen = () => {
         </div>
 
         <div className="flex justify-between relative overflow-hidden min-w-full px-[50px] py-7 border border-b-[1px]">
-          {isSearch && (
-            <NavbarSearch style="w-[765px] border-[1px] border-neutral-600 text-xl px-5 py-2" />
-          )}
+          {isSearch && <NavbarSearch />}
           <div className="flex justify-between w-full max-w-[1400px] mx-auto">
             <ul className="flex justify-center items-center gap-7">
               <Link to="/" aria-label="Go to Home">
@@ -75,19 +73,24 @@ export const NavbarBigScreen = () => {
             </ul>
             <div className="flex justify-center items-center gap-5">
               <IoIosSearch
-                className="hover:scale-110"
+                className="hover:scale-110 cursor-pointer"
                 size={"24px"}
                 aria-label="Search"
                 onClick={() => setIsSearch(true)}
               />
               <Link to="/account/login" aria-label="Go to Login">
-                <CiUser className="hover:scale-110" size={"24px"} />
+                <CiUser
+                  className="hover:scale-110 cursor-pointer"
+                  size={"24px"}
+                />
               </Link>
-              <PiShoppingBagOpenThin
-                className="hover:scale-110"
-                size={"27px"}
-                aria-label="Go to Cart"
-              />
+              <Link to="/cart">
+                <PiShoppingBagOpenThin
+                  className="hover:scale-110 cursor-pointer"
+                  size={"27px"}
+                  aria-label="Go to Cart"
+                />
+              </Link>
             </div>
           </div>
         </div>
@@ -96,9 +99,7 @@ export const NavbarBigScreen = () => {
       {showFixedNavbar && (
         <section className="flex flex-col fixed inset-x-0 bg-white text-neutral-900 transition-all duration-300 z-50">
           <div className="flex justify-between min-w-full relative overflow-hidden px-[50px] py-7 border border-b-[1px]">
-            {isSearch && (
-              <NavbarSearch style="w-[765px] border-[1px] border-neutral-600 text-xl px-5 py-2" />
-            )}
+            {isSearch && <NavbarSearch />}
 
             <div className="flex justify-between w-full max-w-[1400px] mx-auto">
               <ul className="flex justify-center items-center gap-7">
@@ -119,18 +120,23 @@ export const NavbarBigScreen = () => {
               </ul>
               <div className="flex justify-center items-center gap-5">
                 <IoIosSearch
-                  className="hover:scale-110"
+                  className="hover:scale-110 cursor-pointer"
                   size={"24px"}
                   onClick={() => setIsSearch(true)}
                 />
                 <Link to="/account/login" aria-label="Go to Login">
-                  <CiUser className="hover:scale-110" size={"24px"} />
+                  <CiUser
+                    className="hover:scale-110 cursor-pointer"
+                    size={"24px"}
+                  />
                 </Link>
-                <PiShoppingBagOpenThin
-                  className="hover:scale-110"
-                  size={"27px"}
-                  aria-label="Go to Cart"
-                />
+                <Link to="/cart">
+                  <PiShoppingBagOpenThin
+                    className="hover:scale-110 cursor-pointer"
+                    size={"27px"}
+                    aria-label="Go to Cart"
+                  />
+                </Link>
               </div>
             </div>
           </div>
