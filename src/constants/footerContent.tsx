@@ -1,5 +1,3 @@
-import { FaInstagramSquare, FaTiktok, FaYoutube } from "react-icons/fa";
-
 export const FOOTER_CONTENT = [
   {
     title: "Shop",

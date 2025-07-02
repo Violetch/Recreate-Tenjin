@@ -100,7 +100,6 @@ export const NavbarBigScreen = () => {
         <section className="flex flex-col fixed inset-x-0 bg-white text-neutral-900 transition-all duration-300 z-50">
           <div className="flex justify-between min-w-full relative overflow-hidden px-[50px] py-7 border border-b-[1px]">
             {isSearch && <NavbarSearch />}
-
             <div className="flex justify-between w-full max-w-[1400px] mx-auto">
               <ul className="flex justify-center items-center gap-7">
                 <Link to="/" aria-label="Go to Home">

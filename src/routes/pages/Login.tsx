@@ -43,7 +43,7 @@ const Login = () => {
         </a>
       </div>
       <div className="flex flex-col items-center gap-4">
-        <button className="text-neutral-100 bg-neutral-900 px-9 py-3 hover:scale-105 duration-200">
+        <button className="text-neutral-100 bg-neutral-900 px-9 py-3 hover:scale-105 hover:shadow-xl duration-200">
           Sign in
         </button>
         <Link
