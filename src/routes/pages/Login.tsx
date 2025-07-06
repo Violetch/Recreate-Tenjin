@@ -3,14 +3,14 @@ import { useMediaQuery } from "react-responsive";
 import { clsx } from "clsx";
 
 const Login = () => {
-  const is748 = useMediaQuery({ query: "(max-width: 748px)" });
+  const is750 = useMediaQuery({ query: "(max-width: 750px)" });
 
   return (
     <section className="flex flex-col justify-center items-center gap-10 py-10 px-4">
       <h1
         className={clsx("font-semibold", {
-          "text-[2.7em]": !is748,
-          "text-[2em]": is748,
+          "text-[2.7em]": !is750,
+          "text-[2em]": is750,
         })}
       >
         Login
@@ -20,8 +20,8 @@ const Login = () => {
           className={clsx(
             "text-[18px] border hover:border-2 bover:border-neutral-900 border-neutral-500 px-5 py-3",
             {
-              "w-[450px]": !is748,
-              "w-full max-w-[300px]": is748,
+              "w-[450px]": !is750,
+              "w-full max-w-[300px]": is750,
             }
           )}
           type="email"
@@ -31,8 +31,8 @@ const Login = () => {
           className={clsx(
             "text-[18px] border hover:border-2 bover:border-neutral-900 border-neutral-500 px-5 py-3",
             {
-              "w-[450px]": !is748,
-              "w-full max-w-[300px]": is748,
+              "w-[450px]": !is750,
+              "w-full max-w-[300px]": is750,
             }
           )}
           type="password"
@@ -48,7 +48,7 @@ const Login = () => {
         </button>
         <Link
           className="underline underline-offset-3 hover:decoration-2"
-          to="#"
+          to="/account/register"
         >
           Create account
         </Link>

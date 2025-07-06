@@ -6,6 +6,7 @@ import {
 } from "react-icons/fa";
 import { FOOTER_CONTENT } from "../constants/footerContent";
 import { GoArrowRight } from "react-icons/go";
+import { Link } from "@tanstack/react-router";
 
 const Footer = () => {
   const newYear = new Date().getFullYear();
@@ -22,12 +23,13 @@ const Footer = () => {
                   {Array.isArray(item.desc) ? (
                     <>
                       {item.desc.map((item, index) => (
-                        <span
+                        <Link
+                          to={item.each}
                           className="hover:text-neutral-100 hover:underline cursor-pointer"
                           key={index}
                         >
                           {item.each}
-                        </span>
+                        </Link>
                       ))}
                     </>
                   ) : (

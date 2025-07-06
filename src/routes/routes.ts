@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
+import Register from "./pages/Register";
 
 const rootRoute = createRootRoute({
   component: Layout,
@@ -32,6 +33,17 @@ const CartRoute = createRoute({
   component: Cart,
 });
 
-const routeTree = rootRoute.addChildren([HomeRoute, LoginRoute, CartRoute]);
+const RegisterRoute = createRoute({
+  path: "/account/register",
+  getParentRoute: () => rootRoute,
+  component: Register,
+});
+
+const routeTree = rootRoute.addChildren([
+  HomeRoute,
+  LoginRoute,
+  CartRoute,
+  RegisterRoute,
+]);
 
 export const router = createRouter({ routeTree });
