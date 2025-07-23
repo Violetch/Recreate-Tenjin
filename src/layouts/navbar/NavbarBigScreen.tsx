@@ -4,9 +4,11 @@ import { CiUser } from "react-icons/ci";
 import { IoIosSearch } from "react-icons/io";
 import { PiShoppingBagOpenThin } from "react-icons/pi";
 import { Link } from "@tanstack/react-router";
-import NavbarSearch from "./NavbarSearch";
 import { useAtom } from "jotai";
 import { isSearchAtom } from "../../jotai";
+import { clsx } from "clsx";
+import { AnimatePresence, motion } from "motion/react";
+import NavbarSearch from "./NavbarSearch";
 
 export const NavbarBigScreen = () => {
   const navbarRef = useRef<HTMLDivElement | null>(null);
@@ -52,47 +54,66 @@ export const NavbarBigScreen = () => {
           </p>
         </div>
 
-        <div className="flex justify-between relative overflow-hidden min-w-full px-[50px] py-7 border border-b-[1px]">
-          {isSearch && <NavbarSearch />}
-          <div className="flex justify-between w-full max-w-[1400px] mx-auto">
-            <ul className="flex justify-center items-center gap-7">
-              <Link to="/" aria-label="Go to Home">
-                <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
-              </Link>
-              <li className="cursor-pointer">All Products</li>
-              <li className="cursor-pointer">Style</li>
-              <li className="flex items-center gap-2">
-                ScrollWorks
-                <span className="cursor-pointer">
-                  <BsChevronDown size={"11px"} />
-                </span>
-              </li>
-              <li className="cursor-pointer">Discord</li>
-              <li className="cursor-pointer">Contact</li>
-              <li className="cursor-pointer">About Us</li>
-            </ul>
-            <div className="flex justify-center items-center gap-5">
-              <IoIosSearch
-                className="hover:scale-110 cursor-pointer"
-                size={"24px"}
-                aria-label="Search"
-                onClick={() => setIsSearch(true)}
-              />
-              <Link to="/account/login" aria-label="Go to Login">
-                <CiUser
-                  className="hover:scale-110 cursor-pointer"
-                  size={"24px"}
-                />
-              </Link>
-              <Link to="/cart">
-                <PiShoppingBagOpenThin
-                  className="hover:scale-110 cursor-pointer"
-                  size={"27px"}
-                  aria-label="Go to Cart"
-                />
-              </Link>
-            </div>
-          </div>
+        <div
+          className={clsx(
+            "flex justify-between relative overflow-hidden min-w-full px-[50px] border border-b-[1px]",
+            {
+              "py-14": isSearch,
+              "py-7": !isSearch,
+            }
+          )}
+        >
+          {isSearch ? (
+            <NavbarSearch />
+          ) : (
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="flex justify-between w-full max-w-[1400px] mx-auto"
+              >
+                <ul className="flex justify-center items-center gap-7">
+                  <Link to="/" aria-label="Go to Home">
+                    <img className="mr-3" src="Tenjin-1.avif" alt="Tenjin" />
+                  </Link>
+                  <li className="cursor-pointer">All Products</li>
+                  <li className="cursor-pointer">Style</li>
+                  <li className="flex items-center gap-2">
+                    ScrollWorks
+                    <span className="cursor-pointer">
+                      <BsChevronDown size={"11px"} />
+                    </span>
+                  </li>
+                  <li className="cursor-pointer">Discord</li>
+                  <li className="cursor-pointer">Contact</li>
+                  <li className="cursor-pointer">About Us</li>
+                </ul>
+                <div className="flex justify-center items-center gap-5">
+                  <IoIosSearch
+                    className="hover:scale-110 cursor-pointer"
+                    size={"24px"}
+                    aria-label="Search"
+                    onClick={() => setIsSearch(true)}
+                  />
+                  <Link to="/account/login" aria-label="Go to Login">
+                    <CiUser
+                      className="hover:scale-110 cursor-pointer"
+                      size={"24px"}
+                    />
+                  </Link>
+                  <Link to="/cart">
+                    <PiShoppingBagOpenThin
+                      className="hover:scale-110 cursor-pointer"
+                      size={"27px"}
+                      aria-label="Go to Cart"
+                    />
+                  </Link>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          )}
         </div>
       </section>
 
