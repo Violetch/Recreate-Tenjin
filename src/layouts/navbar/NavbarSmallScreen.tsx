@@ -57,7 +57,7 @@ const NavbarSmallScreen = () => {
     <>
       <section>
         <div className="flex flex-col relative z-50 bg-white" ref={navbarRef}>
-          <div className="flex justify-center text-sm tracking-wider font-semibold py-2 bg-neutral-900 min-w-full">
+          <div className="flex justify-center min-w-full bg-neutral-900 py-2 text-center text-sm font-semibold tracking-wider    ">
             <p className="text-neutral-100 text-[13px]">
               Welcome to Tenjin Style & Scrollworks Store
             </p>
